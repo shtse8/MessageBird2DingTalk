@@ -18,7 +18,10 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.post("/", function (req, res) {
-	axios.post('https://oapi.dingtalk.com/robot/send?access_token=7903f40a61ee9241b72b3102717a5d61f377805f3c2b22aa5274cbc66cba499d', 	{
+	if (!req.body)
+		return
+		
+	axios.post('https://oapi.dingtalk.com/robot/send?access_token=' + req.query.access_token, 	{
 		"msgtype": "text",
 		"text": {
 			"content": "From: " + req.body.originator + "\nTo: " + req.body.receiver + "\n" + message
