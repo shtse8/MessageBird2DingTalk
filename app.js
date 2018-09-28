@@ -27,6 +27,8 @@ app.post("/", function (req, res) {
 			"content": "From: " + req.body.originator + "\nTo: " + req.body.receiver + "\n" + req.body.message
 		}
 	})
+	
+	res.end();
 });
 
 
