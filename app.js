@@ -21,7 +21,7 @@ app.post("/", function (req, res) {
 	axios.post('https://oapi.dingtalk.com/robot/send?access_token=7903f40a61ee9241b72b3102717a5d61f377805f3c2b22aa5274cbc66cba499d', 	{
 		"msgtype": "text",
 		"text": {
-			"content": JSON.stringify(req.body)
+			"content": "From: " + req.body.originator + "\nTo: " + req.body.receiver + "\n" + message
 		}
 	})
 });
