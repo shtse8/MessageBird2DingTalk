@@ -17,18 +17,18 @@ app.use(bodyParser.urlencoded({
  */
 app.use(bodyParser.json());
 
-app.post("/", function (req, res) {
+app.post("/", async function (req, res) {
 	if (!req.body)
 		return
 		
-	axios.post('https://oapi.dingtalk.com/robot/send?access_token=' + req.query.access_token, 	{
+	await axios.post('https://oapi.dingtalk.com/robot/send?access_token=' + req.query.access_token, {
 		"msgtype": "text",
 		"text": {
 			"content": "From: " + req.body.originator + "\nTo: " + req.body.receiver + "\n" + req.body.message
 		}
 	})
 	
-	res.end();
+	res.end("true");
 });
 
 
